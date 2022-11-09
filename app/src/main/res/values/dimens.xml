@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="weather_icon_size_128dp">128dp</dimen>
+    <dimen name="weather_icon_size_16dp">16dp</dimen>
+    <dimen name="weather_icon_size_48dp">48dp</dimen>
+    <dimen name="indent_8dp">8dp</dimen>
+    <dimen name="indent_16dp">16dp</dimen>
+    <dimen name="text_size_32sp">32sp</dimen>
+</resources>

@@ -1,0 +1,148 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/deep_sky_blue"
+    android:padding="@dimen/indent_8dp">
+
+    <TextView
+        android:id="@+id/locationName"
+        style="?attr/textAppearanceHeadline6"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:text="Moscow" />
+
+    <TextView
+        android:id="@+id/weatherTemperature"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:textColor="@color/white"
+        android:textSize="@dimen/text_size_32sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/locationName"
+        tools:text="8\u00BA" />
+
+    <TextView
+        android:id="@+id/weatherDescription"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:textColor="@color/white"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/weatherTemperature"
+        tools:text="Описание" />
+
+    <TextView
+        android:id="@+id/weatherFeelsLike"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:textAlignment="center"
+        android:textColor="@color/white"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/weatherDescription"
+        tools:text="Ощущается как" />
+
+    <ImageView
+        android:id="@+id/weatherIcon"
+        android:layout_width="@dimen/weather_icon_size_128dp"
+        android:layout_height="@dimen/weather_icon_size_128dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:src="@tools:sample/avatars" />
+
+    <androidx.constraintlayout.widget.Barrier
+        android:id="@+id/bottomBarrier"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:barrierDirection="bottom"
+        app:constraint_referenced_ids="weatherIcon, weatherFeelsLike" />
+
+    <ImageView
+        android:id="@+id/weatherHumidityIcon"
+        android:layout_width="@dimen/weather_icon_size_16dp"
+        android:layout_height="@dimen/weather_icon_size_16dp"
+        android:src="@drawable/ic_water_drop"
+        app:layout_constraintBottom_toBottomOf="@id/weatherHumidity"
+        app:layout_constraintEnd_toStartOf="@+id/weatherHumidity"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintHorizontal_chainStyle="packed"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@id/weatherHumidity" />
+
+    <TextView
+        android:id="@+id/weatherHumidity"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:paddingEnd="@dimen/indent_16dp"
+        android:textAlignment="center"
+        android:textColor="@color/white"
+        app:layout_constraintEnd_toStartOf="@+id/weatherPressureIcon"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/weatherHumidityIcon"
+        app:layout_constraintTop_toBottomOf="@id/bottomBarrier"
+        tools:text="Влажность" />
+
+    <ImageView
+        android:id="@+id/weatherPressureIcon"
+        android:layout_width="@dimen/weather_icon_size_16dp"
+        android:layout_height="@dimen/weather_icon_size_16dp"
+        android:src="@drawable/ic_pressure"
+        app:layout_constraintBottom_toBottomOf="@id/weatherPressure"
+        app:layout_constraintEnd_toStartOf="@+id/weatherPressure"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/weatherHumidity"
+        app:layout_constraintTop_toTopOf="@id/weatherPressure" />
+
+    <TextView
+        android:id="@+id/weatherPressure"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:paddingEnd="@dimen/indent_16dp"
+        android:textAlignment="center"
+        android:textColor="@color/white"
+        app:layout_constraintEnd_toStartOf="@+id/weatherWindIcon"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/weatherPressureIcon"
+        app:layout_constraintTop_toBottomOf="@id/bottomBarrier"
+        tools:text="Давление" />
+
+    <ImageView
+        android:id="@+id/weatherWindIcon"
+        android:layout_width="@dimen/weather_icon_size_16dp"
+        android:layout_height="@dimen/weather_icon_size_16dp"
+        android:src="@drawable/ic_wind"
+        app:layout_constraintBottom_toBottomOf="@id/weatherWind"
+        app:layout_constraintEnd_toStartOf="@+id/weatherWind"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/weatherPressure"
+        app:layout_constraintTop_toTopOf="@id/weatherWind" />
+
+    <TextView
+        android:id="@+id/weatherWind"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAlignment="center"
+        android:textColor="@color/white"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/weatherWindIcon"
+        app:layout_constraintTop_toBottomOf="@id/bottomBarrier"
+        tools:text="Ветер" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/hourlyWeatherRecyclerView"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/indent_8dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/weatherWind"
+        tools:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+        tools:listitem="@layout/item_hourly_forecast_weather"
+        tools:orientation="horizontal" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
